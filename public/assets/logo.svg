@@ -1,0 +1,15 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Base do diamante -->
+  <polygon points="100,10 180,100 100,190 20,100" fill="#FFBF5E" stroke="#E69D32" stroke-width="2"/>
+  
+  <!-- Facetas internas -->
+  <polygon points="100,10 140,100 100,190" fill="#FFD283" stroke="#E69D32" stroke-width="1"/>
+  <polygon points="100,10 60,100 100,190" fill="#E69D32" stroke="#D18A1E" stroke-width="1"/>
+  
+  <!-- Brilhos -->
+  <circle cx="70" cy="70" r="5" fill="#FFFFFF" opacity="0.7"/>
+  <circle cx="90" cy="50" r="3" fill="#FFFFFF" opacity="0.5"/>
+  
+  <!-- Texto (opcional) -->
+  <text x="100" y="210" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#444444">AMBERSTONE</text>
+</svg>
