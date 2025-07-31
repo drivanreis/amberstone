@@ -42,4 +42,4 @@ echo "⏳ Aguardando 20 segundos para publicação no GitHub Pages..."
 sleep 20
 
 echo "✅ Deploy finalizado com sucesso!"
-echo "🌐 Acesse em: https://drivanreis.github.io/amberglass/"
+echo "🌐 Acesse em: https://drivanreis.github.io/amberstone/"
