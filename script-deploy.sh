@@ -17,6 +17,25 @@ git checkout main
 git pull origin main --rebase
 git clean -fd
 
+# --- NOVO ALERTA E VERIFICAÇÃO ---
+echo ""
+echo "####################################################################"
+echo "# ALERTA: Para seguir com o deploy, a branch 'main' deve estar   #"
+echo "#         ATUALIZADA, COMMITADA e com PUSH para o repositório    #"
+echo "#         remoto (origin/main).                                  #"
+echo "####################################################################"
+echo ""
+read -p "Deseja continuar com o deploy? (S/N): " choice
+
+case "$choice" in
+  s|S ) echo "✅ Continuando com o deploy..." ;;
+  n|N ) echo "❌ Deploy cancelado. Por favor, atualize, comite e faça push da sua branch 'main'."
+        exit 0 ;; # Sai do script
+  * )   echo "Opção inválida. Deploy cancelado."
+        exit 1 ;; # Sai com erro
+esac
+# --- FIM DO NOVO ALERTA ---
+
 echo "⚙️  Criando nova build na pasta dist com Vite..."
 npm run build
 
@@ -24,7 +43,7 @@ echo "💾 Commitando alterações no branch main..."
 # Verifica se há alterações para comitar
 if ! git diff --quiet --exit-code; then
     echo "ℹ️ Nenhuma alteração de código-fonte para comitar no branch main."
-    # Se não houver alterações, não há necessidade de push
+    # Não há necessidade de push se não há commits novos
 else
     git add .
     TIMESTAMP=$(get_timestamp)
@@ -34,17 +53,12 @@ else
     git push origin main
     echo "✅ Alterações enviadas para o branch main remoto."
 fi
-# Adicione um 'else' aqui para o push se o commit não aconteceu
-# ou simplesmente remova a condição para o push se você quiser que ele tente sempre
-
-# Removi o 'git push origin main' que estava fora do if/else
-# Agora ele só faz o push se um commit foi realmente feito
 
 echo "⏳ Aguardando 15 segundos para garantir atualização do GitHub antes do deploy..."
 sleep 15
 
 echo "🚀 Enviando conteúdo da pasta dist para a branch gh-pages usando 'gh-pages' pacote..."
-npm run deploy # <--- ESTA LINHA CRUCIALMENTE DIFERENTE:
+npm run deploy
 
 echo "⏳ Aguardando 20 segundos para publicação no GitHub Pages..."
 sleep 20
