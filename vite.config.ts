@@ -3,8 +3,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-// Se você não usa o plugin viteSourceLocator, pode remover a linha abaixo:
-// import { viteSourceLocator } from "@metagptx/vite-plugin-source-locator";
+import { viteSourceLocator } from "@metagptx/vite-plugin-source-locator";
 
 // https://vitejs.dev/config/
 export default defineConfig({ // <<< Note que removemos '({ mode }) =>'
